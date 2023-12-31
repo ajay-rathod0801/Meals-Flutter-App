@@ -1,5 +1,7 @@
 # meals
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f44875a92ee749b89754d5ec1c7fd5f8)](https://app.codacy.com/gh/ajay-rathod0801/Meals-Flutter-App?utm_source=github.com&utm_medium=referral&utm_content=ajay-rathod0801/Meals-Flutter-App&utm_campaign=Badge_Grade)
+
 A new Flutter project.
 
 ## Getting Started
