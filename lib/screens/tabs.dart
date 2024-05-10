@@ -69,15 +69,25 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
         onSelectScreen: _setScreen,
       ),
       body: activePage,
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: _selectPage,
-        currentIndex: _selectedPageIndex,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.set_meal),
+      bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          setState(() {
+            _selectedPageIndex = index;
+          });
+        },
+        indicatorColor: Theme.of(context).primaryColorLight,
+        selectedIndex: _selectedPageIndex,
+        destinations: const <NavigationDestination>[
+          NavigationDestination(
+            selectedIcon: Icon(Icons.food_bank),
+            icon: Icon(Icons.food_bank_outlined),
             label: 'Categories',
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.star), label: 'Favorites'),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.star),
+            icon: Icon(Icons.star_border),
+            label: 'Favorites',
+          ),
         ],
       ),
     );

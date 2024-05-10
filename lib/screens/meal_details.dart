@@ -75,13 +75,24 @@ class MealDetailsScreen extends ConsumerWidget {
                   ),
             ),
             const SizedBox(height: 14),
-            for (final ingredient in meal.ingredients)
-              Text(
-                ingredient,
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Theme.of(context).colorScheme.onBackground,
-                    ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: meal.ingredients.length,
+              itemBuilder: (ctx, index) => Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
+                child: Text(
+                  '• ${meal.ingredients[index]}',
+                  textAlign: TextAlign.start,
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: Theme.of(context).colorScheme.onBackground,
+                      ),
+                ),
               ),
+            ),
             const SizedBox(height: 24),
             Text(
               'Steps',
@@ -91,20 +102,24 @@ class MealDetailsScreen extends ConsumerWidget {
                   ),
             ),
             const SizedBox(height: 14),
-            for (final step in meal.steps)
-              Padding(
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: meal.steps.length,
+              itemBuilder: (ctx, index) => Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,
                   vertical: 8,
                 ),
                 child: Text(
-                  step,
-                  textAlign: TextAlign.center,
+                  'Step ${index + 1}: ${meal.steps[index]}',
+                  textAlign: TextAlign.start,
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                         color: Theme.of(context).colorScheme.onBackground,
                       ),
                 ),
               ),
+            ),
           ],
         ),
       ),

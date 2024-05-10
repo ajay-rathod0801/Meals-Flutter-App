@@ -4,13 +4,11 @@ import 'package:meals/screens/tabs.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final theme = ThemeData(
-  useMaterial3: true,
   colorScheme: ColorScheme.fromSeed(
-    brightness: Brightness.dark,
-    // seedColor: const Color.fromARGB(255, 131, 57, 0),
-    seedColor: Color.fromARGB(255, 0, 116, 131),
+    brightness: Brightness.light,
+    seedColor: Colors.lightBlue,
   ),
-  textTheme: GoogleFonts.latoTextTheme(),
+  textTheme: GoogleFonts.montserratTextTheme(),
 );
 
 void main() {
