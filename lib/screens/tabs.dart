@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meals/screens/categories.dart';
 import 'package:meals/screens/filters.dart';
 import 'package:meals/screens/meals.dart';
+import 'package:meals/screens/smart_recipe_gen.dart';
 import 'package:meals/widgets/main_drawer.dart';
 import 'package:meals/providers/favorites_provider.dart';
 import 'package:meals/providers/filters_provider.dart';
@@ -61,13 +62,31 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
       activePageTitle = 'Your Favorites';
     }
 
+    if (_selectedPageIndex == 2) {
+      activePage = CreateSmartRecipies();
+      activePageTitle = 'Smart Recipe Generator';
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(activePageTitle),
+        title: Text(activePageTitle,
+            style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                )),
+        actions: <Widget>[
+          if (activePageTitle == 'Categories' || activePageTitle == 'Favorites')
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => FiltersScreen()));
+              },
+              icon: const Icon(Icons.filter_list),
+            ),
+        ],
       ),
-      drawer: MainDrawer(
-        onSelectScreen: _setScreen,
-      ),
+      // drawer: MainDrawer(
+      //   onSelectScreen: _setScreen,
+      // ),
       body: activePage,
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
@@ -75,7 +94,7 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
             _selectedPageIndex = index;
           });
         },
-        indicatorColor: Theme.of(context).primaryColorLight,
+        indicatorColor: Theme.of(context).primaryColorDark,
         selectedIndex: _selectedPageIndex,
         destinations: const <NavigationDestination>[
           NavigationDestination(
@@ -87,6 +106,11 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
             selectedIcon: Icon(Icons.star),
             icon: Icon(Icons.star_border),
             label: 'Favorites',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.bubble_chart),
+            icon: Icon(Icons.bubble_chart_outlined),
+            label: 'Recipe Generator',
           ),
         ],
       ),

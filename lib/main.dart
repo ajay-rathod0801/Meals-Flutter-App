@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meals/screens/tabs.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 final theme = ThemeData(
   colorScheme: ColorScheme.fromSeed(
-    brightness: Brightness.light,
-    seedColor: Colors.lightBlue,
+    brightness: Brightness.dark,
+    seedColor: Colors.deepPurple,
   ),
-  textTheme: GoogleFonts.montserratTextTheme(),
+  textTheme: GoogleFonts.cormorantGaramondTextTheme(),
 );
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: ".env");
   runApp(
     const ProviderScope(
       child: App(),

@@ -79,17 +79,28 @@ class _CategoriesScreenState extends State<CategoriesScreen>
             )
         ],
       ),
-      builder: (context, child) => SlideTransition(
-        position: Tween(
-          begin: const Offset(0, 0.3),
-          end: const Offset(0, 0),
+      builder: (context, child) => FadeTransition(
+        opacity: Tween(
+          begin: 0.0,
+          end: 1.0,
         ).animate(
           CurvedAnimation(
             parent: _animationController,
             curve: Curves.easeInOut,
           ),
         ),
-        child: child,
+        child: SlideTransition(
+          position: Tween(
+            begin: const Offset(0, 0.2),
+            end: const Offset(0, 0),
+          ).animate(
+            CurvedAnimation(
+              parent: _animationController,
+              curve: Curves.easeInOut,
+            ),
+          ),
+          child: child,
+        ),
       ),
     );
   }

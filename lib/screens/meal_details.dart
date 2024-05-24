@@ -115,7 +115,7 @@ class MealDetailsScreen extends ConsumerWidget {
                   'Step ${index + 1}: ${meal.steps[index]}',
                   textAlign: TextAlign.start,
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: Theme.of(context).colorScheme.onBackground,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                 ),
               ),
